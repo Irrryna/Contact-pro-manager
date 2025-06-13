@@ -1,0 +1,19 @@
+<% layout('layout') -%>
+
+<h1>home</h1>
+<h2>Mes contacts</h2>
+
+<% if (contacts.length === 0) { %>
+  <p>Vous n’avez encore aucun contact.</p>
+<% } else { %>
+  <ul>
+    <% contacts.forEach(contact => { %>
+      <li>
+        <strong><%= contact.name %></strong><br>
+        Email : <%= contact.email %><br>
+        Téléphone : <%= contact.phone %><br>
+        Adresse : <%= contact.address %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
