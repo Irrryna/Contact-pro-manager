@@ -1,19 +1,61 @@
-<% layout('layout') -%>
+<div class="container">
+  <div class="row">
+    <div class="col-10 card shadow mx-auto mt-3">
+      <div class="card-header text-center bg-dark text-light mt-2">
+        <h3>MES CONTACTS</h3>
+      </div>
 
-<h1>home</h1>
-<h2>Mes contacts</h2>
+      <div class="my-2">
+        <a href="/contact/new" class="float-end btn btn-success my-1">AJOUTER</a>
+      </div>
 
-<% if (contacts.length === 0) { %>
-  <p>Vous n’avez encore aucun contact.</p>
-<% } else { %>
-  <ul>
-    <% contacts.forEach(contact => { %>
-      <li>
-        <strong><%= contact.name %></strong><br>
-        Email : <%= contact.email %><br>
-        Téléphone : <%= contact.phone %><br>
-        Adresse : <%= contact.address %>
-      </li>
-    <% }) %>
-  </ul>
-<% } %>
+      <div class="card-content">
+        <% if (contacts.length === 0) { %>
+          <p class="text-center my-4">Vous n’avez encore aucun contact.</p>
+        <% } else { %>
+          <table class="table table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Société</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Secteur</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% contacts.forEach(contact => { %>
+                <tr id="tr-<%= contact._id %>">
+                  <td><%= contact.lastName %></td>
+                  <td><%= contact.firstName %></td>
+                  <td><%= contact.company %></td>
+                  <td><%= contact.address %></td>
+                  <td><%= contact.phone %></td>
+                  <td><%= contact.sector %></td>
+                  <td>
+                    <a href="/contact/<%= contact._id %>" class="btn btn-primary">VOIR</a>
+                    <a href="/contact/edit/<%= contact._id %>" class="btn btn-warning">MODIFIER</a>
+                    <button class="btn btn-danger btn-delete" data-id="<%= contact._id %>">SUPPRIMER</button>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Script pour bouton SUPPRIMER
+  document.querySelectorAll(".btn-delete").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (confirm("Voulez-vous supprimer ce contact ?")) {
+        window.location.href = "/contact/delete/" + btn.dataset.id;
+      }
+    });
+  });
+</script>

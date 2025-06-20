@@ -1,4 +1,5 @@
 require("dotenv").config();
+const apiRoutes = require("./routes/apiRoutes");
 
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
@@ -44,6 +45,8 @@ app.use(express.static("public"));
 // Routes
 app.use("/", authRoutes);
 app.get("/home", authMiddleware, contactController.showHomePage);
+app.use("/api", apiRoutes);
+
 
 // Lancer le serveur
 const PORT = process.env.PORT || 8090;

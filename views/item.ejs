@@ -1,0 +1,60 @@
+<% layout('layout') -%>
+
+<div class="container">
+  <div class="row col card shadow mx-auto my-5">
+    <div class="col-10 card shadow mx-auto mt-3">
+      <div class="card-header text-center bg-dark text-light mt-2">
+        <h3>INFORMATION CONTACT</h3>
+      </div>
+      <div class="card-content">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td width="30%">ID :</td>
+              <td><%= contact._id %></td>
+            </tr>
+            <tr>
+              <td>Nom :</td>
+              <td><%= contact.lastName %></td>
+            </tr>
+            <tr>
+              <td>Prénom :</td>
+              <td><%= contact.firstName %></td>
+            </tr>
+            <tr>
+              <td>Société :</td>
+              <td><%= contact.company %></td>
+            </tr>
+            <tr>
+              <td>Adresse :</td>
+              <td><%= contact.address %></td>
+            </tr>
+            <tr>
+              <td>Tel</td>
+              <td><%= contact.phone %></td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><%= contact.email %></td>
+            </tr>
+            <tr>
+              <td>Secteur</td>
+              <td><%= contact.sector %></td>
+            </tr>
+            <tr>
+              <td>Actif</td>
+              <td><%= contact.actif ? "Oui" : "Non" %></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <a href="/home" id="retour" class="btn btn-dark">RETOUR</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
