@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 const authRoutes = require("./routes/authRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 const contactController = require("./controllers/contactController");
 const authMiddleware = require("./middlewares/authMiddleware");
 
@@ -47,6 +48,7 @@ app.use("/", authRoutes);
 app.get("/home", authMiddleware, contactController.showHomePage);
 app.use("/api", apiRoutes);
 
+app.use("/contact", contactRoutes);
 
 // Lancer le serveur
 const PORT = process.env.PORT || 8090;
